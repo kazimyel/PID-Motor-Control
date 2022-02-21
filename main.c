@@ -137,10 +137,10 @@ void MPU6050_Initialize(I2C_HandleTypeDef *hi2c, MPU6050_Accelerometer AccSens, 
 		Data = 0x00;
 	    HAL_I2C_Mem_Write(hi2c, MPU6050_ADDR, PWR_MGMT_1_REG, 1, &Data, 1, HAL_MAX_DELAY);
 
-	    Data = (uint8_t)AccSens;
+	    Data = (uint8_t)AccSens << 3;
 	    HAL_I2C_Mem_Write(hi2c, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, HAL_MAX_DELAY);
 
-	    Data = (uint8_t)GyroSens;
+	    Data = (uint8_t)GyroSens << 3;
 	    HAL_I2C_Mem_Write(hi2c, MPU6050_ADDR, GYRO_CONFIG_REG, 1, &Data, 1, HAL_MAX_DELAY);
 	}
 
